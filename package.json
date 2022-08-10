@@ -1,0 +1,13 @@
+{
+  "name": "digital-market",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/ducuong2018/digital-market.git",
+  "author": "ducuong2018 <ducuong2017@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dcc": "cd ./development && docker-compose",
+    "dcc:up":"yarn dcc up -d",
+    "dcc:down":"yarn dcc down"
+  }
+}
