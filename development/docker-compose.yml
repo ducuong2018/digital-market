@@ -1,4 +1,4 @@
-version: "2.2"
+version: "2.3"
 services:
   digital-market-fe:
     build:
@@ -9,19 +9,28 @@ services:
     volumes:
       - ../digital-market-fe:/digital-market-fe
     container_name: digital-market-fe
+  digital-market-serive:
+    build:
+      context: ../digital-market-service
+      dockerfile: ./Dockerfile
+    ports:
+      - 8123:3333
+    volumes:
+      - ../digital-market-service:/digital-market-service
+    container_name: digital-market-service
   mysql:
     image: mysql:5.7
-    command: mysqld --character-set-server=utf8 --collation-server=utf8_general_ci
     environment:
-      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
       MYSQL_DATABASE: digital-market
+      MYSQL_PASSWORD: Rg2mcVPg
+      MYSQL_ROOT_PASSWORD: Rg2mcVPg
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     volumes:
       - ./sql/mysql:/var/lib/mysql
       - ./sql/mysql-dump:/var/backups
     ports:
       - 127.0.0.1:3311:3306
-    security_opt:
-      - seccomp:unconfined
+    container_name: mysql
 volumes:
   sk_mysql_data:
     driver: local
