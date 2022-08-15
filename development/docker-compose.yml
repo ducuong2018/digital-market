@@ -5,16 +5,18 @@ services:
       context: ../digital-market-fe
       dockerfile: ./Dockerfile
     ports:
-      - 8083:8080
+      - 3321:3321
     volumes:
       - ../digital-market-fe:/digital-market-fe
     container_name: digital-market-fe
+    networks:
+      - nuxt-network
   digital-market-serive:
     build:
       context: ../digital-market-service
       dockerfile: ./Dockerfile
     ports:
-      - 8123:3333
+      - 3333:3333
     volumes:
       - ../digital-market-service:/digital-market-service
     container_name: digital-market-service
@@ -34,3 +36,7 @@ services:
 volumes:
   sk_mysql_data:
     driver: local
+
+networks:
+  nuxt-network:
+    driver: bridge

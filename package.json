@@ -7,7 +7,11 @@
   "license": "MIT",
   "scripts": {
     "dcc": "cd ./development && docker-compose",
-    "dcc:up":"yarn dcc up -d",
-    "dcc:down":"yarn dcc down"
+    "dcc:up": "yarn dcc up -d",
+    "dcc:down": "yarn dcc down"
+  },
+  "dependencies": {
+    "node-sass": "^7.0.1",
+    "sass-loader": "^13.0.2"
   }
 }
