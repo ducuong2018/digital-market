@@ -1,3 +1,9 @@
 a {
-    text-decoration: underline;
+    color: inherit;
+    text-decoration: inherit; /* no underline */
+}
+html {
+    font-family: Roboto,-apple-system,BlinkMacSystemFont,Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-size: 1rem;
+    background-color: #F3F4F6;
 }

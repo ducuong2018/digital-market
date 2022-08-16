@@ -10,17 +10,44 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Products {
+  id             Int             @id @default(autoincrement())
+  name           String
+  description    String
+  originalPrice  String          @map("original_price")
+  price          String
+  slug           String
+  createdAt      DateTime        @default(now()) @map("created_at")
+  updatedAt      DateTime        @default(now()) @map("updated_at")
+  product_images ProductImages[]
+
+  @@map("products")
+}
+
+model ProductImages {
+  id           Int      @id @default(autoincrement())
+  url          String
+  productId    Int      @map("product_id")
+  productPhoto Products @relation(fields: [productId], references: [id])
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @default(now()) @map("updated_at")
+
+  @@map("product_images")
+}
+
 model User {
   id            Int      @id @default(autoincrement())
   email         String   @unique
-  userName      String   @unique
+  userName      String   @unique @map("user_name")
   password      String
   telephone     Int?
   fullname      String?
   role          Role     @default(USER)
-  affiliateCode String?
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @default(now())
+  affiliateCode String?  @map("affiliate_code")
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @default(now()) @map("updated_at")
+
+  @@map("user")
 }
 
 enum Role {
