@@ -11,8 +11,7 @@
     "dcc:down": "yarn dcc down",
     "migrate": "cd ./digital-market-service && yarn prisma migrate dev --name init"
   },
-  "dependencies": {
-    "node-sass": "^7.0.1",
-    "sass-loader": "^13.0.2"
+  "devDependencies": {
+    "prisma": "^4.2.1"
   }
 }

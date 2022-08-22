@@ -40,7 +40,7 @@
       </div>
     </div>
     <div class="category-wrapper">
-      <div class="category"></div>
+      <div class="container"><div class="category"></div></div>
     </div>
   </header>
 </template>
@@ -157,7 +157,7 @@ export default {
   padding-top: 0.5rem;
   background-color: #fff;
   border-bottom-width: 1px;
-  > .category {
+  > .container {
     box-sizing: content-box;
     margin-left: auto;
     margin-right: auto;
