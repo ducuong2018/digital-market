@@ -11,28 +11,40 @@ datasource db {
 }
 
 model Products {
-  id             Int             @id @default(autoincrement())
-  name           String
-  description    String
-  originalPrice  String          @map("original_price")
-  price          String
-  slug           String
-  createdAt      DateTime        @default(now()) @map("created_at")
-  updatedAt      DateTime        @default(now()) @map("updated_at")
-  product_images ProductImages[]
+  id              Int               @id @default(autoincrement())
+  name            String
+  description     String            @db.Text
+  slug            String
+  createdAt       DateTime          @default(now()) @map("created_at")
+  updatedAt       DateTime          @default(now()) @map("updated_at")
+  product_images  ProductImages[]
+  ProductVariants ProductVariants[]
 
   @@map("products")
 }
 
 model ProductImages {
-  id           Int      @id @default(autoincrement())
-  url          String
-  productId    Int      @map("product_id")
-  productPhoto Products @relation(fields: [productId], references: [id])
-  createdAt    DateTime @default(now()) @map("created_at")
-  updatedAt    DateTime @default(now()) @map("updated_at")
+  id        Int      @id @default(autoincrement())
+  url       String   @db.Text
+  productId Int      @map("product_id")
+  pkProduct Products @relation(fields: [productId], references: [id])
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
 
   @@map("product_images")
+}
+
+model ProductVariants {
+  id            Int      @id @default(autoincrement())
+  name          String
+  productId     Int      @map("product_id")
+  price         String
+  originalPrice String   @map("original_price")
+  pkProduct     Products @relation(fields: [productId], references: [id])
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @default(now()) @map("updated_at")
+
+  @@map("product_variants")
 }
 
 model User {
