@@ -22,9 +22,11 @@
   },
   "dependencies": {
     "@nestjs/common": "^9.0.0",
+    "@nestjs/config": "^2.2.0",
     "@nestjs/core": "^9.0.0",
     "@nestjs/platform-express": "^9.0.0",
     "@prisma/client": "^4.2.1",
+    "module-alias": "^2.2.2",
     "prisma": "^4.2.1",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
@@ -72,5 +74,9 @@
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
+  },
+  "_moduleAliases": {
+    "@controllers": "src/controllers",
+    "@services": "src/services"
   }
 }
